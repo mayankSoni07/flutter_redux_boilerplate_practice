@@ -27,6 +27,11 @@ class _ForgatPasswordState extends State<ForgatPassword> {
       child: Column(
         children: [
           Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: Text('FORGOT PASSWORD',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextField(
               onChanged: onChangeFunc,
