@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({Key key}) : super(key: key);
@@ -7,6 +8,8 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     void onPressSubmit() {
       print('presses submit');
+      final LocalStorage storage = new LocalStorage('localstorage_app');
+      storage.setItem('token', true);
       Navigator.pushReplacementNamed(context, '/forgotpassword');
     }
 
