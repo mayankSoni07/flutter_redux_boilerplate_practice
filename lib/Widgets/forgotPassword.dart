@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ForgatPassword extends StatefulWidget {
-  ForgatPassword({Key key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  ForgotPassword({Key key}) : super(key: key);
 
   @override
-  _ForgatPasswordState createState() => _ForgatPasswordState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _ForgatPasswordState extends State<ForgatPassword> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   String email = '';
 
   void onChangeFunc(text) {
@@ -17,13 +17,20 @@ class _ForgatPasswordState extends State<ForgatPassword> {
     setState(() {});
   }
 
-  void onSubmit() {
-    print('submitted : ' + email);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Container(
+    void onSubmit() {
+      print('submitted : ' + email);
+      Navigator.pushNamed(context, '/signin');
+    }
+
+    void onPressGoBack() {
+      print('presses goback');
+      Navigator.maybePop(context);
+    }
+
+    return Scaffold(
+        body: Container(
       child: Column(
         children: [
           Padding(
@@ -42,9 +49,13 @@ class _ForgatPasswordState extends State<ForgatPassword> {
             ),
           ),
           ElevatedButton(onPressed: onSubmit, child: Text('Submit')),
-          Text(email)
+          Text(email),
+          ElevatedButton(
+            child: Text('Go Back'),
+            onPressed: onPressGoBack,
+          )
         ],
       ),
-    );
+    ));
   }
 }

@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 class SignIn extends StatelessWidget {
   SignIn({Key key}) : super(key: key);
 
-  void onPressSubmit() {
-    print('presses submit');
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    void onPressSubmit() {
+      print('presses submit');
+      Navigator.pushReplacementNamed(context, '/forgotpassword');
+    }
+
+    void onPressGoBack() {
+      print('presses goback');
+      Navigator.maybePop(context);
+    }
+
+    return Scaffold(
+        body: Padding(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -37,15 +44,16 @@ class SignIn extends StatelessWidget {
                   labelText: 'Enter password'),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: ElevatedButton(
-              child: Text('submit'),
-              onPressed: onPressSubmit,
-            ),
+          ElevatedButton(
+            child: Text('submit'),
+            onPressed: onPressSubmit,
+          ),
+          ElevatedButton(
+            child: Text('Go Back'),
+            onPressed: onPressGoBack,
           )
         ],
       ),
-    );
+    ));
   }
 }
