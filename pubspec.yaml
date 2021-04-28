@@ -23,8 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  rxdart: any
+  provider: any
   localstorage: any
+  http: any
+  fluttertoast: ^8.0.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
