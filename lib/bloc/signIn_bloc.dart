@@ -1,9 +1,8 @@
 import 'dart:async';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
 import 'package:new_app/bloc/validators.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -32,20 +31,18 @@ class LoginBloc with Validators {
   void signInApiCall() async {
     Map<String, String> headers = {"app-id": "60897f35346107ed28cc411d"};
     var url = Uri.parse('https://dummyapi.io/data/api/user?limit=10');
+
     Response response = await http.get(url, headers: headers);
     int responseStatus = response.statusCode;
-    // if (responseStatus == 200) {
-    //   String responseBody = response.body;
-    //   print('Response status: ${responseStatus} ${responseBody}');
-    // } else {
-    Fluttertoast.showToast(
-      msg: "Error occured while fetching the data",
-      toastLength: Toast.LENGTH_LONG,
-      webBgColor: "#e74c3c",
-      textColor: Colors.black,
-      timeInSecForIosWeb: 5,
-    );
-    // }
+    if (responseStatus == 200) {
+      String responseBody = response.body;
+      print('Response status: ${responseStatus} ${responseBody}');
+    } else {
+      BotToast.showText(
+        text: "xxxx",
+        contentColor: Colors.green,
+      );
+    }
   }
 
   //Dispose

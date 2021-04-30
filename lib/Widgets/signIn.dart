@@ -1,7 +1,8 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:new_app/bloc/signIn_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:localstorage/localstorage.dart';
+// import 'package:localstorage/localstorage.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key key}) : super(key: key);
@@ -62,6 +63,7 @@ class _SignInState extends State<SignIn> {
               builder: (context, snapshot) => Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: TextField(
+                  obscureText: true,
                   onChanged: bloc.changeLoginPassword,
                   decoration: InputDecoration(
                       errorText: snapshot.error,
@@ -75,6 +77,17 @@ class _SignInState extends State<SignIn> {
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Text('Forgot Password?', textAlign: TextAlign.right)),
             _submitButton(),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: ElevatedButton(
+                    onPressed: () => {
+                          print('clidked'),
+                          BotToast.showText(
+                            text: "xxxx",
+                            contentColor: Colors.green,
+                          )
+                        },
+                    child: Text("Click here")))
           ],
         ),
       ),
